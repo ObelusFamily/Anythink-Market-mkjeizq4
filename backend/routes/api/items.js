@@ -160,7 +160,7 @@ router.post("/", auth.required, function(req, res, next) {
 router.get("/:item", auth.optional, function(req, res, next) {
   Promise.all([
     req.payload ? User.findById(req.payload.id) : null,
-    req.item.populate("seller").execPopulate()
+    req.item.populate("title").execPopulate()
   ])
     .then(function(results) {
       var user = results[0];
